@@ -17,9 +17,11 @@ body {
 .header {
     background-color:#DAF9B2;
     width: 100%;
+    position: relative;
 }
 
 .nav {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -56,6 +58,12 @@ body {
     color: #FE8922;
     cursor: pointer;
     border-bottom: 1px solid #FE8922;
+}
+
+.header-menu {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
 }
 
 .main {
@@ -143,3 +151,183 @@ body {
     font-feature-settings: 'liga' off;
 }
 
+@media screen and (max-width: 600px) {
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 16px 0px 16px;
+    }
+
+    .header-menu {
+        position: absolute;
+        opacity: 1;
+        z-index: 1;
+        top: 24px;
+        right: 16px;
+        left: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .nav {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .menu__btn {
+        position: relative;
+    }
+
+    .menu__card {
+        pointer-events: none;
+    }
+
+    .menu__checkbox {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .menu__checkbox:checked ~ .menu__box {
+        transform: translateX(0);
+    }
+
+    .menu__checkbox:checked ~ .burger .burger__item {
+        opacity: 0;
+    }
+
+    .menu__checkbox:checked ~ .burger::after {
+        transform: rotate(-45deg) translate(2px, 13px);
+    }
+
+    .menu__checkbox:checked ~ .burger::before {
+        transform: rotate(45deg) translate(2px, -13px);
+    }
+
+    .burger {
+        position: relative;
+        width: 40px;
+        height: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .burger__item {
+        transition: opacity 0.2s ease;
+    }
+
+    .burger__item,
+    .burger::after,
+    .burger::before {
+        display: block;
+        height: 2px;
+        width: 100%;
+        border-radius: 100px;
+        background-color:#000000;
+    }
+
+    .burger::after,
+    .burger::before {
+        content: "";
+        transition: transform 0.2s ease;
+    }
+
+    .burger::after {
+        transform-origin: left center;
+    }
+
+    .burger::before {
+        transform-origin: left center;
+    }
+
+    .menu__box {
+        transform: translateX(100vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 10;
+        top: 96px;
+        right: 16px;
+        left: 16px;
+        transition: transform 0.2s ease;
+        pointer-events: none;
+    }
+
+    .menu__card {
+        background-color: #FFFFFF;
+        width: 100%;
+        min-height: 356px;
+        padding: 48px 32px 32px 33px;
+        border-radius: 8px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .menu__item {
+        font-weight: 500;
+        font-size: 1.5rem;
+        line-height: 160%;
+        color: #000000;
+    }
+
+    .menu__item:not(:last-of-type) {
+        margin-bottom: 8px;
+    }
+
+    .link {
+        text-decoration: none;
+        pointer-events: auto;
+        color: #000000;
+    }
+
+    .main-heading {
+        font-size: 2.25rem;
+        padding: 0px 16px;
+        margin-top: 72px;
+        margin-bottom: 24px;
+        text-align: start;
+    }
+    
+    .second-heading {
+        font-size: 1rem;
+        padding: 0px 16px;
+        text-align: start;
+        margin-bottom: 48px;
+    }
+
+    .btn {
+        margin: 0px 16px 208px 16px;
+        align-self: flex-start;
+    }
+
+    .footer {
+        padding: 50px 16px;
+    }
+
+    .footer-par {
+        font-size: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .main-heading {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+    }
+    
+    .second-heading {
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+}
